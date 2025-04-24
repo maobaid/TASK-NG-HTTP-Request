@@ -2,19 +2,20 @@
   <div
     class="border border-black rounded-md w-[70%] h-[70%] overflow-hidden flex flex-col md:flex-row p-5"
   >
+    @if(pet()){
     <div class="h-full w-full md:w-[35%]">
       <img
-        [src]="pet?.image"
-        [alt]="pet?.name"
+        [src]="pet()?.image"
+        [alt]="pet()?.name"
         class="object-contain w-full h-full"
       />
     </div>
     <div class="w-full md:w-[65%] h-full pt-[30px] flex flex-col p-3">
-      <h1>Name: {{ pet?.name }}</h1>
-      <h1>Type: {{ pet?.type }}</h1>
-      <h1>Adopted: {{ pet?.adopted ? "yes" : "no" }}</h1>
+      <h1>Name: {{ pet()?.name }}</h1>
+      <h1>Type: {{ pet()?.type }}</h1>
+      <h1>Adopted: {{ pet()?.adopted ? "yes" : "no" }}</h1>
 
-      @if (!pet?.adopted) {
+      @if (!pet()?.adopted) {
       <button
         class="w-[70px] border border-black rounded-md hover:bg-green-400 my-5"
       >
@@ -26,5 +27,10 @@
         Delete
       </button>
     </div>
+    } @else {
+    <div class="h-full w-full text-center">
+      <p class="">Pet not found. It may have been removed or never existed.</p>
+    </div>
+    }
   </div>
 </div>
